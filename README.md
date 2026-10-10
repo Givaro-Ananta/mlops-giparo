@@ -21,11 +21,11 @@ mlops giparo/
 ├── LAPORAN_HANDSON_1.md           # Laporan praktikum detail mencakup hasil nyata & analisis
 ├── requirements.txt               # Daftar pustaka pendukung (mlflow, torch, scikit-learn, optuna)
 ├── start_server.sh                # Skrip peluncuran MLflow Tracking Server (Slide 41)
-├── 01_logging_dasar.py            # Slide 42–43: Logging Dasar scikit-learn (Random Forest)
-├── 02_pytorch_logging_per_epoch.py# Slide 44–45: Deep Learning PyTorch per-epoch tracking & best checkpoint
-├── 03_autologging.py              # Slide 46: Autologging scikit-learn & framework support
-├── 04_optuna_nested_runs.py       # Slide 47–48: Hyperparameter Tuning Optuna dengan Nested Runs
-├── 05_search_and_registry.py      # Slide 49–50: Pencarian run programatik & Model Registry (@champion)
+├── 01_logging_dasar.py            # Logging Dasar scikit-learn (Random Forest)
+├── 02_pytorch_logging_per_epoch.py# Deep Learning PyTorch per-epoch tracking & best checkpoint
+├── 03_autologging.py              # Autologging scikit-learn & framework support
+├── 04_optuna_nested_runs.py       # Hyperparameter Tuning Optuna dengan Nested Runs
+├── 05_search_and_registry.py      # Pencarian run programatik & Model Registry (@champion)
 └── run_all.py                     # Master runner untuk menjalankan seluruh alur otomatis
 ```
 
