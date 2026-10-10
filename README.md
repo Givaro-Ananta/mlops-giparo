@@ -1,9 +1,10 @@
 # Praktikum MLOps — Hands-on 1: MLflow Experiment Tracking & Registry
 
-**Nama:** Givaro Ananta
+**Praktikan:** Givaro Ananta
 **NIM:** 123450078
-**Program Studi:** Sains Data
+**Program Studi:** Sains Data — Institut Teknologi Sumatera (ITERA)
 **Mata Kuliah:** MLOps (Minggu 6)
+**Referensi Materi:** Slide 39–52 (`slide_39-82.md`)
 
 ---
 
@@ -13,52 +14,45 @@ Proyek ini mengimplementasikan dan mengembangkan seluruh materi kode pada **Hand
 
 ---
 
-## 📁 Struktur Direktori Proyek
+## 📁 Struktur Direktori `mlops giparo`
 
 ```text
 mlops giparo/
-├── .gitignore                     # Konfigurasi pengabaian file biner & temporary
 ├── README.md                      # Panduan lengkap, arsitektur, dan instruksi eksekusi
+├── LAPORAN_HANDSON_1.md           # Laporan praktikum detail mencakup hasil nyata & analisis
 ├── requirements.txt               # Daftar pustaka pendukung (mlflow, torch, scikit-learn, optuna)
-├── start_server.sh                # Skrip peluncuran MLflow Tracking Server (port 5000)
-├── run_all.py                     # Master runner otomatis seluruh modul
-├── checkpoints/                   # Penyimpanan checkpoint model lokal
-│   └── best.pt                    # Checkpoint PyTorch ResNet18 terbaik
-├── docs/                          # Berkas dokumentasi & laporan praktikum
-│   └── LAPORAN_HANDS-ON_1.md      # Laporan praktikum detail mencakup hasil nyata & analisis
-├── scripts/                       # Kode modul praktikum Hands-on 1
-│   ├── 01_logging_dasar.py        # Logging Dasar scikit-learn (Random Forest)
-│   ├── 02_pytorch_logging_per_epoch.py # Deep Learning PyTorch per-epoch tracking & best checkpoint
-│   ├── 03_autologging.py          # Autologging scikit-learn & framework support
-│   ├── 04_optuna_nested_runs.py   # Hyperparameter Tuning Optuna dengan Nested Runs
-│   └── 05_search_and_registry.py  # Pencarian run programatik & Model Registry (@champion)
-├── mlartifacts/                   # Penyimpanan artefak server MLflow
-└── mlflow.db                      # Basis data SQLite metadata MLflow
+├── start_server.sh                # Skrip peluncuran MLflow Tracking Server (Slide 41)
+├── 01_logging_dasar.py            # Slide 42–43: Logging Dasar scikit-learn (Random Forest)
+├── 02_pytorch_logging_per_epoch.py# Slide 44–45: Deep Learning PyTorch per-epoch tracking & best checkpoint
+├── 03_autologging.py              # Slide 46: Autologging scikit-learn & framework support
+├── 04_optuna_nested_runs.py       # Slide 47–48: Hyperparameter Tuning Optuna dengan Nested Runs
+├── 05_search_and_registry.py      # Slide 49–50: Pencarian run programatik & Model Registry (@champion)
+└── run_all.py                     # Master runner untuk menjalankan seluruh alur otomatis
 ```
 
 ---
 
 ## 🔬 Pemetaan Modul ke Slide Perkuliahan
 
-| Modul | Slide Acuan | Fokus & Kode yang Diterapkan |
-|---|---|---|
-| **`start_server.sh`** | **Slide 41** | Menjalankan MLflow Tracking Server dengan backend database SQLite (`sqlite:///mlflow.db`) dan artifact root `./mlartifacts` di port 5000. |
-| **`scripts/01_logging_dasar.py`** | **Slide 42 & 43** | Experiment `breast-cancer-clf`, logging parameter RandomForest, metrik `val_f1` dan `val_auc`, serta packaging model sklearn dengan `skops_trusted_types`. |
-| **`scripts/02_pytorch_logging_per_epoch.py`** | **Slide 44 & 45** | Arsitektur PyTorch ResNet, logging parameter (`lr`, `batch_size`, `epochs`, `arch`, `seed`), hash dataset (`data_md5`), environment `requirements.txt`, loop 20 epoch logging metrik per-epoch (`step=epoch`), model checkpointing `best.pt`, dan `mlflow.pytorch.log_model`. |
-| **`scripts/03_autologging.py`** | **Slide 46** | Demonstrasi `mlflow.autolog()` dan `mlflow.sklearn.autolog()` untuk mencatat otomatis seluruh parameter, kurva evaluasi, dan model tanpa kode logging manual. |
-| **`scripts/04_optuna_nested_runs.py`** | **Slide 47 & 48** | Pencarian hyperparameter (`lr`, `batch_size`, `dropout`) dengan Optuna study. Struktur hierarki: 1 Parent Run (`optuna-sweep-01`) menampung 20 Child Runs (`trial-0` s.d. `trial-19`) dengan `nested=True`. |
-| **`scripts/05_search_and_registry.py`** | **Slide 49 & 50** | Query programatik via `mlflow.search_runs(filter_string=...)`, seleksi `best_run_id`, pendaftaran model ke Model Registry, penetapan tag validasi, pemberian alias `@challenger`, promosi ke `@champion`, serta loading model via `models:/breast-cancer-clf@champion` untuk inferensi batch. |
+| Modul                                         | Slide Acuan             | Fokus & Kode yang Diterapkan                                                                                                                                                                                                                                                                           |
+| --------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`start_server.sh`**                 | **Slide 41**      | Menjalankan MLflow Tracking Server dengan backend database SQLite (`sqlite:///mlflow.db`) dan artifact root `./mlartifacts` di port 5000.                                                                                                                                                          |
+| **`01_logging_dasar.py`**             | **Slide 42 & 43** | Experiment`breast-cancer-clf`, logging parameter RandomForest, metrik `val_f1` dan `val_auc`, serta packaging model sklearn dengan `skops_trusted_types`.                                                                                                                                      |
+| **`02_pytorch_logging_per_epoch.py`** | **Slide 44 & 45** | Arsitektur PyTorch ResNet, logging parameter (`lr`, `batch_size`, `epochs`, `arch`, `seed`), hash dataset (`data_md5`), environment `requirements.txt`, loop 20 epoch logging metrik per-epoch (`step=epoch`), model checkpointing `best.pt`, dan `mlflow.pytorch.log_model`.      |
+| **`03_autologging.py`**               | **Slide 46**      | Demonstrasi`mlflow.autolog()` dan `mlflow.sklearn.autolog()` untuk mencatat otomatis seluruh parameter, kurva evaluasi, dan model tanpa kode logging manual.                                                                                                                                       |
+| **`04_optuna_nested_runs.py`**        | **Slide 47 & 48** | Pencarian hyperparameter (`lr`, `batch_size`, `dropout`) dengan Optuna study. Struktur hierarki: 1 Parent Run (`optuna-sweep-01`) menampung 20 Child Runs (`trial-0` s.d. `trial-19`) dengan `nested=True`.                                                                              |
+| **`05_search_and_registry.py`**       | **Slide 49 & 50** | Query programatik via`mlflow.search_runs(filter_string=...)`, seleksi `best_run_id`, pendaftaran model ke Model Registry, penetapan tag validasi, pemberian alias `@challenger`, promosi ke `@champion`, serta loading model via `models:/breast-cancer-clf@champion` untuk inferensi batch. |
 
 ---
 
-## Panduan Menjalankan
+## Langkah-langkah Menjalankan
 
 ### 1. Prasyarat Lingkungan
 
 Pastikan dependensi terpasang:
 
 ```bash
-cd "mlops giparo"
+cd "mlops-giparo"
 pip install -r requirements.txt
 ```
 
@@ -84,19 +78,19 @@ Atau menjalankan modul secara terpisah satu per satu:
 
 ```bash
 # Modul 1: Logging Dasar scikit-learn
-python scripts/01_logging_dasar.py
+python 01_logging_dasar.py
 
 # Modul 2: PyTorch Deep Learning Logging per Epoch
-python scripts/02_pytorch_logging_per_epoch.py
+python 02_pytorch_logging_per_epoch.py
 
 # Modul 3: Autologging Demo
-python scripts/03_autologging.py
+python 03_autologging.py
 
 # Modul 4: Optuna Nested Runs
-python scripts/04_optuna_nested_runs.py
+python 04_optuna_nested_runs.py
 
 # Modul 5: Search Runs Programatik & Model Registry
-python scripts/05_search_and_registry.py
+python 05_search_and_registry.py
 ```
 
 ### 4. Meninjau Hasil & Analisis di MLflow UI
