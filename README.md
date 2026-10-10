@@ -2,15 +2,14 @@
 
 **Praktikan:** Givaro Ananta
 **NIM:** 123450078
-**Program Studi:** Sains Data — Institut Teknologi Sumatera (ITERA)
+**Program Studi:** Sains Data
 **Mata Kuliah:** MLOps (Minggu 6)
-**Referensi Materi:** Slide 39–52 (`slide_39-82.md`)
 
 ---
 
-## 📌 Ringkasan Proyek
+## 📌 Ringkasan Tugas
 
-Proyek ini mengimplementasikan dan mengembangkan seluruh materi kode pada **Hands-on 1: MLflow** dari bahan kuliah Minggu 6 (Slide 39 hingga 52). Seluruh sintaks dan struktur kode asli yang diberikan di slide dipertahankan secara utuh tanpa modifikasi, lalu dikembangkan dengan lingkungan eksekusi lengkap, dataset nyata, kompatibilitas framework MLflow 3.x, serta pencatatan identitas praktikan (**Givaro Ananta - 123450078**) di setiap eksperimen dan model.
+Tugas ini mengimplementasikan dan mengembangkan seluruh materi kode pada **Hands-on 1: MLflow** dari materi perkuliahan Minggu 6 (Slide 39 hingga 52). Seluruh sintaks dan struktur kode asli yang diberikan di slide dipertahankan secara utuh tanpa modifikasi, lalu dikembangkan dengan lingkungan eksekusi lengkap, dataset nyata, kompatibilitas framework MLflow 3.x.
 
 ---
 
