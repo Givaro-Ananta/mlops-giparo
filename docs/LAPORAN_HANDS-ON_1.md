@@ -177,5 +177,5 @@ Penerapan Hands-on 1 ini membuktikan konsep penting dalam arsitektur MLOps:
 
 ## 6. Kesimpulan
 
-1. Seluruh kode Hands-on 1 pada Slide 39–52 berhasil dijalankan 100% tanpa mengubah sintaks yang diberikan di slide.
+1. Seluruh kode Hands-on 1 pada Slide 39–52 berhasil dijalankan 100%.
 2. Lingkungan MLflow Tracking Server dan Model Registry bekerja secara stabil pada port 5000 dengan basis data SQLite.
