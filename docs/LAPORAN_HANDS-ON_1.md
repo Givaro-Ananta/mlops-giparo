@@ -1,6 +1,6 @@
 # Laporan Praktikum MLOps: Hands-on 1 — MLflow Experiment Tracking & Model Registry
 
-| Identitas Praktikan      | Keterangan                                        |
+| Identitas               | Keterangan                                        |
 | :----------------------- | :------------------------------------------------ |
 | **Nama Praktikan** | Givaro Ananta                                     |
 | **NIM**            | 123450078                                         |
