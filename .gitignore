@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Model checkpoints & local binaries
+*.pt
+checkpoints/*.pt
+!checkpoints/.gitkeep
+
+# MLflow local runs and databases (opsional jika tidak ingin commit file biner)
+mlflow.db
+mlartifacts/
+mlruns/
+.trash/
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# IDE & Editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
